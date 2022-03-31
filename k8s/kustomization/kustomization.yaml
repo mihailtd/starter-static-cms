@@ -1,0 +1,9 @@
+bases:
+  - "./bases/pg"
+  - "./bases/strapi"
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+# TODO: change namespace
+namespace: starter-static

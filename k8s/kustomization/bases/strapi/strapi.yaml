@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strapi
+  labels:
+    app: strapi
+spec:
+  selector:
+    matchLabels:
+      app: strapi
+  template:
+    metadata:
+      labels:
+        app: strapi
+    spec:
+      restartPolicy: Always
+      volumes:
+      - name: strapi-pv
+        persistentVolumeClaim:
+          claimName: strapi-data-pvc
+      containers:
+        - name: strapi
+          image: starter-static/cms
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: strapi-pv
+              mountPath: /srv/app
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "800Mi"
+          env:
+            - name: DATABASE_CLIENT
+              value: postgres
+            - name: DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-db-pguser-strapi
+                  key: dbname
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-db-pguser-strapi
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-db-pguser-strapi
+                  key: port
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-db-pguser-strapi
+                  key: user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-db-pguser-strapi
+                  key: password

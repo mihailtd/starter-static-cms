@@ -1,0 +1,44 @@
+version: v1beta11
+
+# `vars` specifies variables which may be used as ${VAR_NAME} in devspace.yaml
+vars:
+- name: STRAPI_IMAGE
+  value: starter-static/cms
+- name: CLIENT_IMAGE
+  value: starter-static/client
+
+# `deployments` tells DevSpace how to deploy this project
+deployments:
+- name: starter-static-cms
+  # This deployment uses `kubectl` but you can also define `helm` deployments
+  kubectl:
+    manifests:
+    - ./k8s/kustomization/
+    kustomize: true
+
+# `profiles` lets you modify the config above for different environments (e.g. dev vs production)
+profiles:
+  # This profile is called `production` and you can use it for example using: devspace deploy -p production
+  # We generally recommend using the base config without any profiles as optimized for development (e.g. image build+push is disabled)
+- name: production
+# This profile adds our image to the config so that DevSpace will build, tag and push our image before the deployment
+  merge:
+    images:
+      cms:
+        image: registry.gitlab.com/farcasmihai91/${STRAPI_IMAGE}
+        dockerfile: ./docker/Dockerfile.cms
+        tags:
+          - ${DEVSPACE_GIT_COMMIT}
+        context: ./
+        rebuildStrategy: always
+        build:
+          kaniko:
+      client:
+        image: registry.gitlab.com/farcasmihai91/${CLIENT_IMAGE}
+        dockerfile: ./docker/Dockerfile.client
+        tags:
+          - ${DEVSPACE_GIT_COMMIT}
+        context: ./
+        rebuildStrategy: always
+        build:
+          kaniko:

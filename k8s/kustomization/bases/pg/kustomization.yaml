@@ -1,0 +1,5 @@
+# TODO: change namespace
+namespace: starter-static
+
+resources:
+- ha-postgres.yaml

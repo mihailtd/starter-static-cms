@@ -1,0 +1,16 @@
+{
+  "name": "@starter-static/client",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The Nuxt3 Client for the Starter",
+  "homepage": "https://localhost:4000",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@nuxtjs/strapi": "^1.3.1",
+    "nuxt3": "latest"
+  }
+}

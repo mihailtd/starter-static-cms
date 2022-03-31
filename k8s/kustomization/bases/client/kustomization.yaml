@@ -1,0 +1,7 @@
+# TODO: change namespace
+namespace: starter-static
+
+resources:
+  - client.yaml
+  - client-service.yaml
+  - client-ingress.yaml

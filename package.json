@@ -1,0 +1,20 @@
+{
+  "name": "starter-static-cms",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "https://github.com/farcasmihai91/starter-static-cms.git",
+  "author": "Mihai Farcas <farcasmihai91@gmail.com>",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "@app/*"
+    ]
+  },
+  "scripts": {
+    "client": "yarn workspace @starter-static/client",
+    "cms": "yarn workspace @starter-static/cms"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.1"
+  }
+}

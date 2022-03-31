@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: strapi-ingress
+  namespace: starter
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`strapi.farcas.xyz`)
+      priority: 10
+      services:
+        - name: strapi-service
+          port: 1337
+  tls:
+    certResolver: default
+    options:
+      name: strapi-service

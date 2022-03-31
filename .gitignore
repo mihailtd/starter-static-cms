@@ -1,0 +1,14 @@
+.yarn
+node_modules
+*.log
+.nuxt
+nuxt.d.ts
+.output
+.env
+
+dist
+
+# Ignore DevSpace cache and log folder
+.devspace/
+.dockerconfig.json
+secret-*.yaml

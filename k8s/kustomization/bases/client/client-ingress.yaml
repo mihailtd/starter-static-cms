@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: client-ingress
+  namespace: starter
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`farcas.xyz`)
+      priority: 10
+      services:
+        - name: client-service
+          port: 4000
+  tls:
+    certResolver: default
+    options:
+      name: client-service

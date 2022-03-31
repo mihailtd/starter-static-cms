@@ -1,0 +1,9 @@
+# TODO: change namespace
+namespace: starter-static
+
+resources:
+- strapi-pv.yaml
+- strapi-pvc.yaml
+- strapi.yaml
+- strapi-service.yaml
+- strapi-ingress.yaml

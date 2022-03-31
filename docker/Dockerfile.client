@@ -1,0 +1,3 @@
+FROM nginx
+EXPOSE 80
+COPY @app/client/dist/ /usr/share/nginx/html

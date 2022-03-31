@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  labels:
+    app: client
+spec:
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: client
+          image: starter-static/client
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "400m"
+              memory: "800Mi"
