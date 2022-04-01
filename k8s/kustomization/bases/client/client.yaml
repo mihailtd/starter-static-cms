@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: client
-          image: starter-static/client
+          image: registry.gitlab.com/farcasmihai91/starter/static-client:855d392b
           imagePullPolicy: IfNotPresent
           resources:
             limits:

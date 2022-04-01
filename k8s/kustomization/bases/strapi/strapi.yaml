@@ -20,8 +20,8 @@ spec:
           claimName: strapi-data-pvc
       containers:
         - name: strapi
-          image: starter-static/cms
-          imagePullPolicy: IfNotPresent
+          image: registry.gitlab.com/farcasmihai91/starter/static-cms:855d392b
+          imagePullPolicy: Always
           volumeMounts:
             - name: strapi-pv
               mountPath: /srv/app

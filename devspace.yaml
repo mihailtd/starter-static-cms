@@ -3,9 +3,9 @@ version: v1beta11
 # `vars` specifies variables which may be used as ${VAR_NAME} in devspace.yaml
 vars:
 - name: STRAPI_IMAGE
-  value: starter-static/cms
+  value: starter/static-cms
 - name: CLIENT_IMAGE
-  value: starter-static/client
+  value: starter/static-client
 
 # `deployments` tells DevSpace how to deploy this project
 deployments:
@@ -32,7 +32,7 @@ profiles:
         context: ./
         rebuildStrategy: always
         build:
-          kaniko:
+          docker:
       client:
         image: registry.gitlab.com/farcasmihai91/${CLIENT_IMAGE}
         dockerfile: ./docker/Dockerfile.client
