@@ -2,8 +2,14 @@
 namespace: starter-static
 
 resources:
-# - strapi-pv.yaml
-# - strapi-pvc.yaml
+- strapi-uploads-pv.yaml
+- strapi-uploads-pvc.yaml
+- strapi-data-pv.yaml
+- strapi-data-pvc.yaml
+- strapi-components-pv.yaml
+- strapi-components-pvc.yaml
+- strapi-extensions-pv.yaml
+- strapi-extensions-pvc.yaml
 - strapi.yaml
 - strapi-service.yaml
 - strapi-ingress.yaml

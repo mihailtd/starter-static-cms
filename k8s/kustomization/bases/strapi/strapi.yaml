@@ -14,17 +14,32 @@ spec:
         app: strapi
     spec:
       restartPolicy: Always
-      # volumes:
-      # - name: strapi-pv
-      #   persistentVolumeClaim:
-      #     claimName: strapi-data-pvc
+      volumes:
+      - name: strapi-uploads-pv
+        persistentVolumeClaim:
+          claimName: strapi-uploads-pvc
+      - name: strapi-data-pv
+        persistentVolumeClaim:
+          claimName: strapi-data-pvc
+      - name: strapi-components-pv
+        persistentVolumeClaim:
+          claimName: strapi-components-pvc
+      - name: strapi-extensions-pv
+        persistentVolumeClaim:
+          claimName: strapi-extensions-pvc
       containers:
         - name: strapi
-          image: registry.gitlab.com/farcasmihai91/starter/static-cms:a274cbe7
+          image: registry.gitlab.com/farcasmihai91/starter/static-cms:05d9285d
           imagePullPolicy: Always
-          # volumeMounts:
-          #   - name: strapi-pv
-          #     mountPath: /srv/app
+          volumeMounts:
+            - name: strapi-uploads-pv
+              mountPath: /srv/app/public/uploads
+            - name: strapi-data-pv
+              mountPath: /srv/app/src/api
+            - name: strapi-components-pv
+              mountPath: /srv/app/src/components
+            - name: strapi-extensions-pv
+              mountPath: /srv/app/src/extensions
           resources:
             limits:
               cpu: "500m"
