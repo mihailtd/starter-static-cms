@@ -14,17 +14,17 @@ spec:
         app: strapi
     spec:
       restartPolicy: Always
-      volumes:
-      - name: strapi-pv
-        persistentVolumeClaim:
-          claimName: strapi-data-pvc
+      # volumes:
+      # - name: strapi-pv
+      #   persistentVolumeClaim:
+      #     claimName: strapi-data-pvc
       containers:
         - name: strapi
-          image: registry.gitlab.com/farcasmihai91/starter/static-cms:855d392b
+          image: registry.gitlab.com/farcasmihai91/starter/static-cms:a274cbe7
           imagePullPolicy: Always
-          volumeMounts:
-            - name: strapi-pv
-              mountPath: /srv/app
+          # volumeMounts:
+          #   - name: strapi-pv
+          #     mountPath: /srv/app
           resources:
             limits:
               cpu: "500m"
