@@ -1,0 +1,9 @@
+query homepage {
+	homepage {
+		data {
+			attributes {
+				title: Title
+			}
+		}
+	}
+}
