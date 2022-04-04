@@ -2,13 +2,17 @@ import { defineNuxtConfig } from "nuxt3";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/strapi"],
+  modules: ["nuxt-graphql-client", "@nuxtjs/tailwindcss"],
   srcDir: "app/",
   buildDir: "dist/",
   target: "static",
-  strapi: {
-    url: process.env.STRAPI_URL || "http://localhost:1337",
-    prefix: "/api",
-    version: "v4",
+  tailwindcss: {
+    cssPath: "~/app/assets/css/tailwind.css",
+    configPath: "tailwind.config.js",
+  },
+  publicRuntimeConfig: {
+    "graphql-client": {
+      documentPaths: ["app/queries"],
+    },
   },
 });
